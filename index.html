@@ -1,79 +1,519 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Mysqlcalculator.github.io : " />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Mysqlcalculator.github.io</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MySQL Calculator</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
   </head>
-
   <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/nicola51980/mysqlcalculator.github.io">View on GitHub</a>
-
-          <h1 id="project_title">Mysqlcalculator.github.io</h1>
-          <h2 id="project_tagline"></h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/nicola51980/mysqlcalculator.github.io/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/nicola51980/mysqlcalculator.github.io/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
+    <div class="container bs-docs-container">
+      <div class="row">
+        <div class="col-md-9" role="main">
+          <h1>MySQL Calculator</h1>
+        </div>
+        <form class="form-horizontal" role="form" id="calculator">
+          <div class="col-md-9" role="main">
+            <h2>Hardware</h2>
+            <table class="table" style="width: 300px;">
+              <thead>
+                <tr>
+                  <th>Variables</th>
+                  <th>Value</th>
+                  <th>Unit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">RAM</label>
+                  </td>
+                  <td>
+                    <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="hardware_ram_value" value="4">
+                  </td>
+                  <td>
+                    <select style="width: 55px;" class="form-control input-sm" id="hardware_ram_unit">
+                      <option value="3">GB</option>
+                      <option value="2">MB</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">CPU</label>
+                  </td>
+                  <td>
+                    <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="hardware_cpu_value" value="1">
+                  </td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>
+                    <label style="width=300px;" class="control-label col-sm-1">Number_of_disks</label>
+                  </td>
+                  <td>
+                    <input style="width: 50px;" maxlength="2" class="form-control input-sm" id="hardware_disks_value" value="1">
+                  </td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-9" role="main">
+            <h2>MySQL</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Variables</th>
+                  <th>Percentage</th>
+                  <th>Bytes</th>
+                  <th>Value</th>
+                  <th>Unit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">innodb_buffer_pool_size</label>
+                  </td>
+                  <td>
+                    <div id="innodb_bpz_percentage_group">
+                      <label class="control-label col-sm-3">%</label>
+                      <input style="width: 70px;" class="form-control input-sm" id="innodb_bpz_percentage" disabled>
+                    </div>
+                  </td>
+                  <td>
+                    <input style="width: 200px;" class="form-control input-sm" id="innodb_bpz_bytes" disabled>
+                  </td>
+                  <td>
+                    <div id="innodb_bpz_value_group">
+                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="innodb_bpz_value" value="3">
+                    </div>
+                  </td>
+                  <td>
+                    <select class="form-control input-sm" id="innodb_bpz_unit">
+                      <option value="3">GB</option>
+                      <option value="2">MB</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">innodb_additional_mem_pool_size</label>
+                  </td>
+                  <td>
+                    <div id="innodb_amps_percentage_group">
+                      <label class="control-label col-sm-3">%</label>
+                      <input style="width: 70px;" class="form-control input-sm" id="innodb_amps_percentage" disabled>
+                    </div>
+                  </td>
+                  <td>
+                    <input style="width: 200px;" class="form-control input-sm" id="innodb_amps_bytes" disabled>
+                  </td>
+                  <td>
+                    <div id="innodb_amps_value_group">
+                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="innodb_amps_value" value="128">
+                    </div>
+                  </td>
+                  <td>
+                    <select class="form-control input-sm" id="innodb_amps_unit">
+                      <option value="3">GB</option>
+                      <option value="2" selected="selected">MB</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">innodb_log_file_size</label>
+                  </td>
+                  <td>
+                    <div id="innodb_lfs_percentage_group">
+                      <label class="control-label col-sm-3">%</label>
+                      <input style="width: 70px;" class="form-control input-sm" id="innodb_lfs_percentage" disabled>
+                    </div>
+                  </td>
+                  <td>
+                    <input style="width: 200px;" class="form-control input-sm" id="innodb_lfs_bytes" disabled>
+                  </td>
+                  <td>
+                    <div id="innodb_lfs_value_group">
+                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="innodb_lfs_value" value="128">
+                    </div>
+                  </td>
+                  <td>
+                    <select class="form-control input-sm" id="innodb_lfs_unit">
+                      <option value="3">GB</option>
+                      <option value="2" selected="selected">MB</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">innodb_log_buffer_size</label>
+                  </td>
+                  <td>
+                    <div id="innodb_lbs_percentage_group">
+                      <label class="control-label col-sm-3">%</label>
+                      <input style="width: 70px;" class="form-control input-sm" id="innodb_lbs_percentage" disabled>
+                    </div>
+                  </td>
+                  <td>
+                    <input style="width: 200px;" class="form-control input-sm" id="innodb_lbs_bytes" disabled>
+                  </td>
+                  <td>
+                    <div id="innodb_lbs_value_group">
+                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="innodb_lbs_value" value="32">
+                    </div>
+                  </td>
+                  <td>
+                    <select class="form-control input-sm" id="innodb_lbs_unit">
+                      <option value="3">GB</option>
+                      <option value="2" selected="selected">MB</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">key_buffer_size</label>
+                  </td>
+                  <td>&nbsp;</td>
+                  <td>
+                    <input style="width: 200px;" class="form-control input-sm" id="key_buffer_size_bytes" disabled>
+                  </td>
+                  <td>
+                    <div id="key_buffer_size_value_group">
+                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="key_buffer_size_value" value="8">
+                    </div>
+                  </td>
+                  <td>
+                    <select class="form-control input-sm" id="key_buffer_size_unit">
+                      <option value="3">GB</option>
+                      <option value="2" selected="selected">MB</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">net_buffer_length</label>
+                  </td>
+                  <td>&nbsp;</td>
+                  <td>
+                    <input style="width: 200px;" class="form-control input-sm" id="net_buffer_length_bytes" disabled>
+                  </td>
+                  <td>
+                    <div id="net_buffer_length_value_group">
+                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="net_buffer_length_value" value="16">
+                    </div>
+                  </td>
+                  <td>
+                    <select class="form-control input-sm" id="net_buffer_length_unit">
+                      <option value="3">GB</option>
+                      <option value="2">MB</option>
+                      <option value="1" selected="selected">KB</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">query_cache_size</label>
+                  </td>
+                  <td>&nbsp;</td>
+                  <td>
+                    <input style="width: 200px;" class="form-control input-sm" id="query_cache_size_bytes" disabled>
+                  </td>
+                  <td>
+                    <div id="query_cache_size_value_group">
+                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="query_cache_size_value" value="256">
+                    </div>
+                  </td>
+                  <td>
+                    <select class="form-control input-sm" id="query_cache_size_unit">
+                      <option value="3">GB</option>
+                      <option value="2" selected="selected">MB</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">sort_buffer_size</label>
+                  </td>
+                  <td>&nbsp;</td>
+                  <td>
+                    <input style="width: 200px;" class="form-control input-sm" id="sort_buffer_size_bytes" disabled>
+                  </td>
+                  <td>
+                    <div id="sort_buffer_size_value_group">
+                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="sort_buffer_size_value" value="256">
+                    </div>
+                  </td>
+                  <td>
+                    <select class="form-control input-sm" id="sort_buffer_size_unit">
+                      <option value="3">GB</option>
+                      <option value="2">MB</option>
+                      <option value="1" selected="selected">KB</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">myisam_sort_buffer_size</label>
+                  </td>
+                  <td>&nbsp;</td>
+                  <td>
+                    <input style="width: 200px;" class="form-control input-sm" id="myisam_sort_buffer_size_bytes" disabled>
+                  </td>
+                  <td>
+                    <div id="myisam_sort_buffer_size_value_group">
+                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="myisam_sort_buffer_size_value" value="2">
+                    </div>
+                  </td>
+                  <td>
+                    <select class="form-control input-sm" id="myisam_sort_buffer_size_unit">
+                      <option value="3">GB</option>
+                      <option value="2" selected="selected">MB</option>
+                      <option value="1">KB</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">thread_stack</label>
+                  </td>
+                  <td>&nbsp;</td>
+                  <td>
+                    <input style="width: 200px;" class="form-control input-sm" id="thread_stack_bytes" disabled>
+                  </td>
+                  <td>
+                    <div id="thread_stack_value_group">
+                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="thread_stack_value" value="256">
+                    </div>
+                  </td>
+                  <td>
+                    <select class="form-control input-sm" id="thread_stack_unit">
+                      <option value="3">GB</option>
+                      <option value="2">MB</option>
+                      <option value="1" selected="selected">KB</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">read_buffer_size</label>
+                  </td>
+                  <td>&nbsp;</td>
+                  <td>
+                    <input style="width: 200px;" class="form-control input-sm" id="read_buffer_size_bytes" disabled>
+                  </td>
+                  <td>
+                    <div id="read_buffer_size_value_group">
+                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="read_buffer_size_value" value="256">
+                    </div>
+                  </td>
+                  <td>
+                    <select class="form-control input-sm" id="read_buffer_size_unit">
+                      <option value="3">GB</option>
+                      <option value="2">MB</option>
+                      <option value="1" selected="selected">KB</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">read_rnd_buffer_size</label>
+                  </td>
+                  <td>&nbsp;</td>
+                  <td>
+                    <input style="width: 200px;" class="form-control input-sm" id="read_rnd_buffer_size_bytes" disabled>
+                  </td>
+                  <td>
+                    <div id="read_rnd_buffer_size_value_group">
+                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="read_rnd_buffer_size_value" value="2">
+                    </div>
+                  </td>
+                  <td>
+                    <select class="form-control input-sm" id="read_rnd_buffer_size_unit">
+                      <option value="3">GB</option>
+                      <option value="2" selected="selected">MB</option>
+                      <option value="1">KB</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">join_buffer_size</label>
+                  </td>
+                  <td>&nbsp;</td>
+                  <td>
+                    <input style="width: 200px;" class="form-control input-sm" id="join_buffer_size_bytes" disabled>
+                  </td>
+                  <td>
+                    <div id="join_buffer_size_value_group">
+                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="join_buffer_size_value" value="512">
+                    </div>
+                  </td>
+                  <td>
+                    <select class="form-control input-sm" id="join_buffer_size_unit">
+                      <option value="3">GB</option>
+                      <option value="2">MB</option>
+                      <option value="1" selected="selected">KB</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">max_connections</label>
+                  </td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>
+                    <div id="max_connections_value_group">
+                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="max_connections_value" value="128" disabled>
+                    </div>
+                  </td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="control-label col-sm-1">innodb_thread_concurrency</label>
+                  </td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>
+                    <div id="innodb_thread_concurrency_value_group">
+                      <input style="width: 60px;" maxlength="3" class="form-control input-sm" id="innodb_thread_concurrency_value" value="6" disabled>
+                    </div>
+                  </td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
     </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Mysqlcalculator.github.io maintained by <a href="https://github.com/nicola51980">nicola51980</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
   </body>
+  <script>
+$(document).ready(function() {
+  calculate();
+
+  $("input[id$='_value']").keypress(function(event) {
+    // Backspace, tab, enter, end, home, left, right
+    // We don't support the del key in Opera because del == . == 46.
+    var controlKeys = [8, 9, 13, 35, 36, 37, 39];
+    // IE doesn't support indexOf
+    var isControlKey = controlKeys.join(",").match(new RegExp(event.which));
+    // Some browsers just don't raise events for control keys. Easy.
+    // e.g. Safari backspace.
+    if (!event.which || // Control keys in most browsers. e.g. Firefox tab is 0
+        (49 <= event.which && event.which <= 57) || // Always 1 through 9
+        (48 == event.which && $(this).attr("value") || // No 0 first digit
+        (46 == event.which)) || // Allow dot (.)
+        isControlKey) { // Opera assigns values for control keys.
+      return;
+    } else {
+      event.preventDefault();
+    }
+  });
+
+  $("input[id$='_value']").each(function() {
+    to_bytes(this.id);
+  });
+
+  $("input[id$='_value'],select[id$='_unit']").on('change',function() {
+    to_bytes(this.id);
+    calculate();
+  });
+});
+
+function calculate() {
+  innodb_bpz();
+  innodb_frist('amps', 1, 5);
+  innodb_frist('lfs',  1, 20);
+  innodb_frist('lbs',  1, 2);
+  get_max_connections();
+  get_innodb_thread_concurrency();
+}
+
+function get_value(name) {
+  var value = $('#' + name + '_value').val();
+  var unit  = $('#' + name + '_unit').val();
+  return value * Math.pow(1024, unit);
+}
+
+function get_percentage(x,y) {
+  return ((x/y)*100).toFixed(2);
+}
+
+function to_bytes(id) {
+  var name = id.replace('_value', '').replace('_unit', '');
+  var value = get_value(name);
+  $('#' + name + '_bytes').val(value);
+}
+
+function valid_value(value) {
+  return (( value % 1024 ) == 0 )? true : false;
+}
+
+function innodb_frist(name, min, max) {
+  ram        = $('#innodb_bpz_bytes').val();
+  value      = get_value('innodb_' + name);
+  percentage = get_percentage(value, ram);
+
+  if(percentage >= min && percentage <= max) {
+    $('#innodb_' + name + '_value_group').removeClass('has-error');
+  } else {
+    $('#innodb_' + name + '_value_group').addClass('has-error');
+  }
+
+  $('#innodb_' + name + '_percentage').val(percentage);
+  $('#innodb_' + name + '_bytes').val(value);
+}
+
+function innodb_bpz() {
+  ram        = get_value('hardware_ram');
+  bpz        = get_value('innodb_bpz');
+  percentage = get_percentage(bpz, ram);
+
+  if(bpz <= ram &&
+     (percentage >= 50 && percentage <= 80)) {
+    $('#innodb_bpz_value_group').removeClass('has-error');
+  } else {
+    $('#innodb_bpz_value_group').addClass('has-error');
+  }
+
+  $('#innodb_bpz_percentage').val(percentage);
+  $('#innodb_bpz_bytes').val(bpz);
+}
+
+function get_max_connections() {
+  ram = get_value('hardware_ram');
+
+  global_buffers  = get_value('key_buffer_size');
+  global_buffers += get_value('innodb_bpz');
+  global_buffers += get_value('innodb_lbs');
+  global_buffers += get_value('innodb_amps');
+  global_buffers += get_value('net_buffer_length');
+  global_buffers += get_value('query_cache_size');
+
+  thread_buffers  = get_value('sort_buffer_size');
+  thread_buffers += get_value('myisam_sort_buffer_size');
+  thread_buffers += get_value('thread_stack');
+  thread_buffers += get_value('read_buffer_size');
+  thread_buffers += get_value('join_buffer_size');
+  thread_buffers += get_value('read_rnd_buffer_size');
+
+  $('#max_connections_value').val(Math.round((ram - global_buffers)/thread_buffers));
+}
+
+function get_innodb_thread_concurrency() {
+  var cpu   = $('#hardware_cpu_value').val();
+  var core  = $('#hardware_core_value').val();
+  var disks = $('#hardware_disks_value').val();
+
+  $('#innodb_thread_concurrency_value').val(2 * (parseInt(cpu) + parseInt(disks)));
+}
+  </script>
 </html>
