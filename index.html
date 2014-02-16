@@ -10,13 +10,18 @@
     <script src="js/bootstrap.min.js"></script>
   </head>
   <body>
+    <form class="form-horizontal" role="form" id="calculator">
     <div class="container bs-docs-container">
       <div class="row">
-        <div class="col-md-9" role="main">
+        <div class="col-md-8">
           <h1>MySQL Calculator</h1>
         </div>
-        <form class="form-horizontal" role="form" id="calculator">
-          <div class="col-md-9" role="main">
+        <div class="col-md-4" style="padding-top: 32px;">
+          <a href="https://github.com/nicola51980/mysqlcalculator/issues/new">Report bug and new feature</a>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-9">
             <h2>Hardware</h2>
             <table class="table" style="width: 300px;">
               <thead>
@@ -28,9 +33,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">RAM</label>
-                  </td>
+                  <td>RAM</td>
                   <td>
                     <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="hardware_ram_value" value="4">
                   </td>
@@ -42,18 +45,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">CPU</label>
-                  </td>
+                  <td>CPU</td>
                   <td>
                     <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="hardware_cpu_value" value="1">
                   </td>
                   <td>&nbsp;</td>
                 </tr>
                 <tr>
-                  <td>
-                    <label style="width=300px;" class="control-label col-sm-1">Number_of_disks</label>
-                  </td>
+                  <td>Disks</td>
                   <td>
                     <input style="width: 50px;" maxlength="2" class="form-control input-sm" id="hardware_disks_value" value="1">
                   </td>
@@ -62,7 +61,9 @@
               </tbody>
             </table>
           </div>
-          <div class="col-md-9" role="main">
+        </div>
+        <div class="row">
+          <div class="col-md-8">
             <h2>MySQL</h2>
             <table class="table">
               <thead>
@@ -76,140 +77,124 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">innodb_buffer_pool_size</label>
-                  </td>
+                  <td>innodb_buffer_pool_size</td>
                   <td>
                     <div id="innodb_bpz_percentage_group">
-                      <label class="control-label col-sm-3">%</label>
-                      <input style="width: 70px;" class="form-control input-sm" id="innodb_bpz_percentage" disabled>
+                      <input style="width: 50px;" class="form-control input-sm" id="innodb_bpz_percentage" disabled>
                     </div>
                   </td>
                   <td>
-                    <input style="width: 200px;" class="form-control input-sm" id="innodb_bpz_bytes" disabled>
+                    <input style="width: 120px;" class="form-control input-sm" id="innodb_bpz_bytes" disabled>
                   </td>
                   <td>
                     <div id="innodb_bpz_value_group">
-                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="innodb_bpz_value" value="3">
+                      <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="innodb_bpz_value" value="3">
                     </div>
                   </td>
                   <td>
-                    <select class="form-control input-sm" id="innodb_bpz_unit">
+                    <select style="width: 50px;" class="form-control input-sm" id="innodb_bpz_unit">
                       <option value="3">GB</option>
                       <option value="2">MB</option>
                     </select>
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">innodb_additional_mem_pool_size</label>
-                  </td>
+                  <td>innodb_additional_mem_pool_size</td>
                   <td>
                     <div id="innodb_amps_percentage_group">
-                      <label class="control-label col-sm-3">%</label>
-                      <input style="width: 70px;" class="form-control input-sm" id="innodb_amps_percentage" disabled>
+                      <input style="width: 50px;" class="form-control input-sm" id="innodb_amps_percentage" disabled>
                     </div>
                   </td>
                   <td>
-                    <input style="width: 200px;" class="form-control input-sm" id="innodb_amps_bytes" disabled>
+                    <input style="width: 120px;" class="form-control input-sm" id="innodb_amps_bytes" disabled>
                   </td>
                   <td>
                     <div id="innodb_amps_value_group">
-                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="innodb_amps_value" value="128">
+                      <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="innodb_amps_value" value="128">
                     </div>
                   </td>
                   <td>
-                    <select class="form-control input-sm" id="innodb_amps_unit">
+                    <select style="width: 50px;" class="form-control input-sm" id="innodb_amps_unit">
                       <option value="3">GB</option>
                       <option value="2" selected="selected">MB</option>
                     </select>
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">innodb_log_file_size</label>
-                  </td>
+                  <td>innodb_log_file_size</td>
                   <td>
                     <div id="innodb_lfs_percentage_group">
-                      <label class="control-label col-sm-3">%</label>
-                      <input style="width: 70px;" class="form-control input-sm" id="innodb_lfs_percentage" disabled>
+                      <input style="width: 50px;" class="form-control input-sm" id="innodb_lfs_percentage" disabled>
                     </div>
                   </td>
                   <td>
-                    <input style="width: 200px;" class="form-control input-sm" id="innodb_lfs_bytes" disabled>
+                    <input style="width: 120px;" class="form-control input-sm" id="innodb_lfs_bytes" disabled>
                   </td>
                   <td>
                     <div id="innodb_lfs_value_group">
-                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="innodb_lfs_value" value="128">
+                      <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="innodb_lfs_value" value="128">
                     </div>
                   </td>
                   <td>
-                    <select class="form-control input-sm" id="innodb_lfs_unit">
+                    <select style="width: 50px;" class="form-control input-sm" id="innodb_lfs_unit">
                       <option value="3">GB</option>
                       <option value="2" selected="selected">MB</option>
                     </select>
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">innodb_log_buffer_size</label>
-                  </td>
+                  <td>innodb_log_buffer_size</td>
                   <td>
                     <div id="innodb_lbs_percentage_group">
-                      <label class="control-label col-sm-3">%</label>
-                      <input style="width: 70px;" class="form-control input-sm" id="innodb_lbs_percentage" disabled>
+                      <input style="width: 50px;" class="form-control input-sm" id="innodb_lbs_percentage" disabled>
                     </div>
                   </td>
                   <td>
-                    <input style="width: 200px;" class="form-control input-sm" id="innodb_lbs_bytes" disabled>
+                    <input style="width: 120px;" class="form-control input-sm" id="innodb_lbs_bytes" disabled>
                   </td>
                   <td>
                     <div id="innodb_lbs_value_group">
-                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="innodb_lbs_value" value="32">
+                      <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="innodb_lbs_value" value="32">
                     </div>
                   </td>
                   <td>
-                    <select class="form-control input-sm" id="innodb_lbs_unit">
+                    <select style="width: 50px;" class="form-control input-sm" id="innodb_lbs_unit">
                       <option value="3">GB</option>
                       <option value="2" selected="selected">MB</option>
                     </select>
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">key_buffer_size</label>
-                  </td>
+                  <td>key_buffer_size</td>
                   <td>&nbsp;</td>
                   <td>
-                    <input style="width: 200px;" class="form-control input-sm" id="key_buffer_size_bytes" disabled>
+                    <input style="width: 120px;" class="form-control input-sm" id="key_buffer_size_bytes" disabled>
                   </td>
                   <td>
                     <div id="key_buffer_size_value_group">
-                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="key_buffer_size_value" value="8">
+                      <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="key_buffer_size_value" value="8">
                     </div>
                   </td>
                   <td>
-                    <select class="form-control input-sm" id="key_buffer_size_unit">
+                    <select style="width: 50px;" class="form-control input-sm" id="key_buffer_size_unit">
                       <option value="3">GB</option>
                       <option value="2" selected="selected">MB</option>
                     </select>
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">net_buffer_length</label>
-                  </td>
+                  <td>net_buffer_length</td>
                   <td>&nbsp;</td>
                   <td>
-                    <input style="width: 200px;" class="form-control input-sm" id="net_buffer_length_bytes" disabled>
+                    <input style="width: 120px;" class="form-control input-sm" id="net_buffer_length_bytes" disabled>
                   </td>
                   <td>
                     <div id="net_buffer_length_value_group">
-                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="net_buffer_length_value" value="16">
+                      <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="net_buffer_length_value" value="16">
                     </div>
                   </td>
                   <td>
-                    <select class="form-control input-sm" id="net_buffer_length_unit">
+                    <select style="width: 50px;" class="form-control input-sm" id="net_buffer_length_unit">
                       <option value="3">GB</option>
                       <option value="2">MB</option>
                       <option value="1" selected="selected">KB</option>
@@ -217,40 +202,36 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">query_cache_size</label>
-                  </td>
+                  <td>query_cache_size</td>
                   <td>&nbsp;</td>
                   <td>
-                    <input style="width: 200px;" class="form-control input-sm" id="query_cache_size_bytes" disabled>
+                    <input style="width: 120px;" class="form-control input-sm" id="query_cache_size_bytes" disabled>
                   </td>
                   <td>
                     <div id="query_cache_size_value_group">
-                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="query_cache_size_value" value="256">
+                      <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="query_cache_size_value" value="256">
                     </div>
                   </td>
                   <td>
-                    <select class="form-control input-sm" id="query_cache_size_unit">
+                    <select style="width: 50px;" class="form-control input-sm" id="query_cache_size_unit">
                       <option value="3">GB</option>
                       <option value="2" selected="selected">MB</option>
                     </select>
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">sort_buffer_size</label>
-                  </td>
+                  <td>sort_buffer_size</td>
                   <td>&nbsp;</td>
                   <td>
-                    <input style="width: 200px;" class="form-control input-sm" id="sort_buffer_size_bytes" disabled>
+                    <input style="width: 120px;" class="form-control input-sm" id="sort_buffer_size_bytes" disabled>
                   </td>
                   <td>
                     <div id="sort_buffer_size_value_group">
-                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="sort_buffer_size_value" value="256">
+                      <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="sort_buffer_size_value" value="256">
                     </div>
                   </td>
                   <td>
-                    <select class="form-control input-sm" id="sort_buffer_size_unit">
+                    <select style="width: 50px;" class="form-control input-sm" id="sort_buffer_size_unit">
                       <option value="3">GB</option>
                       <option value="2">MB</option>
                       <option value="1" selected="selected">KB</option>
@@ -258,20 +239,18 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">myisam_sort_buffer_size</label>
-                  </td>
+                  <td>myisam_sort_buffer_size</td>
                   <td>&nbsp;</td>
                   <td>
-                    <input style="width: 200px;" class="form-control input-sm" id="myisam_sort_buffer_size_bytes" disabled>
+                    <input style="width: 120px;" class="form-control input-sm" id="myisam_sort_buffer_size_bytes" disabled>
                   </td>
                   <td>
                     <div id="myisam_sort_buffer_size_value_group">
-                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="myisam_sort_buffer_size_value" value="2">
+                      <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="myisam_sort_buffer_size_value" value="2">
                     </div>
                   </td>
                   <td>
-                    <select class="form-control input-sm" id="myisam_sort_buffer_size_unit">
+                    <select style="width: 50px;" class="form-control input-sm" id="myisam_sort_buffer_size_unit">
                       <option value="3">GB</option>
                       <option value="2" selected="selected">MB</option>
                       <option value="1">KB</option>
@@ -279,20 +258,18 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">thread_stack</label>
-                  </td>
+                  <td>thread_stack</td>
                   <td>&nbsp;</td>
                   <td>
-                    <input style="width: 200px;" class="form-control input-sm" id="thread_stack_bytes" disabled>
+                    <input style="width: 120px;" class="form-control input-sm" id="thread_stack_bytes" disabled>
                   </td>
                   <td>
                     <div id="thread_stack_value_group">
-                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="thread_stack_value" value="256">
+                      <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="thread_stack_value" value="256">
                     </div>
                   </td>
                   <td>
-                    <select class="form-control input-sm" id="thread_stack_unit">
+                    <select style="width: 50px;" class="form-control input-sm" id="thread_stack_unit">
                       <option value="3">GB</option>
                       <option value="2">MB</option>
                       <option value="1" selected="selected">KB</option>
@@ -300,20 +277,18 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">read_buffer_size</label>
-                  </td>
+                  <td>read_buffer_size</td>
                   <td>&nbsp;</td>
                   <td>
-                    <input style="width: 200px;" class="form-control input-sm" id="read_buffer_size_bytes" disabled>
+                    <input style="width: 120px;" class="form-control input-sm" id="read_buffer_size_bytes" disabled>
                   </td>
                   <td>
                     <div id="read_buffer_size_value_group">
-                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="read_buffer_size_value" value="256">
+                      <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="read_buffer_size_value" value="256">
                     </div>
                   </td>
                   <td>
-                    <select class="form-control input-sm" id="read_buffer_size_unit">
+                    <select style="width: 50px;" class="form-control input-sm" id="read_buffer_size_unit">
                       <option value="3">GB</option>
                       <option value="2">MB</option>
                       <option value="1" selected="selected">KB</option>
@@ -321,20 +296,18 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">read_rnd_buffer_size</label>
-                  </td>
+                  <td>read_rnd_buffer_size</td>
                   <td>&nbsp;</td>
                   <td>
-                    <input style="width: 200px;" class="form-control input-sm" id="read_rnd_buffer_size_bytes" disabled>
+                    <input style="width: 120px;" class="form-control input-sm" id="read_rnd_buffer_size_bytes" disabled>
                   </td>
                   <td>
                     <div id="read_rnd_buffer_size_value_group">
-                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="read_rnd_buffer_size_value" value="2">
+                      <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="read_rnd_buffer_size_value" value="2">
                     </div>
                   </td>
                   <td>
-                    <select class="form-control input-sm" id="read_rnd_buffer_size_unit">
+                    <select style="width: 50px;" class="form-control input-sm" id="read_rnd_buffer_size_unit">
                       <option value="3">GB</option>
                       <option value="2" selected="selected">MB</option>
                       <option value="1">KB</option>
@@ -342,20 +315,18 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">join_buffer_size</label>
-                  </td>
+                  <td>join_buffer_size</td>
                   <td>&nbsp;</td>
                   <td>
-                    <input style="width: 200px;" class="form-control input-sm" id="join_buffer_size_bytes" disabled>
+                    <input style="width: 120px;" class="form-control input-sm" id="join_buffer_size_bytes" disabled>
                   </td>
                   <td>
                     <div id="join_buffer_size_value_group">
-                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="join_buffer_size_value" value="512">
+                      <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="join_buffer_size_value" value="512">
                     </div>
                   </td>
                   <td>
-                    <select class="form-control input-sm" id="join_buffer_size_unit">
+                    <select style="width: 50px;" class="form-control input-sm" id="join_buffer_size_unit">
                       <option value="3">GB</option>
                       <option value="2">MB</option>
                       <option value="1" selected="selected">KB</option>
@@ -363,27 +334,23 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">max_connections</label>
-                  </td>
+                  <td>max_connections</td>
                   <td>&nbsp;</td>
                   <td>&nbsp;</td>
                   <td>
                     <div id="max_connections_value_group">
-                      <input style="width: 60px;" maxlength="4" class="form-control input-sm" id="max_connections_value" value="128" disabled>
+                      <input style="width: 50px;" maxlength="4" class="form-control input-sm" id="max_connections_value" value="128" disabled>
                     </div>
                   </td>
                   <td>&nbsp;</td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="control-label col-sm-1">innodb_thread_concurrency</label>
-                  </td>
+                  <td>innodb_thread_concurrency</td>
                   <td>&nbsp;</td>
                   <td>&nbsp;</td>
                   <td>
                     <div id="innodb_thread_concurrency_value_group">
-                      <input style="width: 60px;" maxlength="3" class="form-control input-sm" id="innodb_thread_concurrency_value" value="6" disabled>
+                      <input style="width: 50px;" maxlength="3" class="form-control input-sm" id="innodb_thread_concurrency_value" value="6" disabled>
                     </div>
                   </td>
                   <td>&nbsp;</td>
@@ -391,9 +358,12 @@
               </tbody>
             </table>
           </div>
-        </form>
+          <div class="col-md-4">
+
+          </div>
       </div>
     </div>
+    </form>
   </body>
   <script>
 $(document).ready(function() {
@@ -444,7 +414,7 @@ function get_value(name) {
 }
 
 function get_percentage(x,y) {
-  return ((x/y)*100).toFixed(2);
+  return ((x/y)*100).toFixed(0);
 }
 
 function to_bytes(id) {
